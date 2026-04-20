@@ -33,26 +33,8 @@ Originally shipped as a Streamlit prototype (preserved in `streamlit_impl/`), th
 ---
 
 ## 🖼️ Preview
+<img width="2465" height="1324" alt="image" src="https://github.com/user-attachments/assets/43987c51-a11a-497c-809a-2c533d9c0004" />
 
-> Add your own screenshots here after your first run. A few good angles:
-> `docs/screens/tasi-overview.png`, `docs/screens/us-candle.png`, `docs/screens/mobile.png`.
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  ⚖  Mizan · ميزان       [ 🇸🇦 TASI ] 🟢 [ 🇺🇸 US ]         │
-├─────────────────────────────────────────────────────────┤
-│  LEVEL (SAR)    1-MONTH     TOP SECTOR   WEAKEST        │
-│  11,842.30      +2.14%      🏦 Banking   🛒 Retail       │
-│  ▲ +0.42%       period      +3.8%        -1.2%          │
-├─────────────────────────────────────────────────────────┤
-│                                              ┌────────┐ │
-│   INDEX CHART (area)                         │ AI     │ │
-│   ╱╲     ╱╲╱╲        ╱──╲                    │ BRIEF  │ │
-│  ╱  ╲   ╱    ╲    ╱─╯    ╲                   │        │ │
-│ ╱    ╲─╱      ╲──╱                           │ Claude │ │
-│                                              └────────┘ │
-└─────────────────────────────────────────────────────────┘
-```
 
 ---
 
