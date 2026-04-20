@@ -237,7 +237,7 @@ MIT — see [LICENSE](./LICENSE).
 
 <div align="center">
 
-**Built with respect for the تداول — and a lot of شاي.**
+**Built with respect for the تداول — and a lot of شاهي.**
 
 [Report a bug](https://github.com/Zyad-Algabeai/Mizan/issues) · [LinkedIn](https://www.linkedin.com/in/) · [Email](mailto:zezoo6764@gmail.com)
 
