@@ -1,0 +1,78 @@
+{
+  // ---------- Python (backend) ----------
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+  "python.analysis.extraPaths": ["${workspaceFolder}/backend"],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 4
+  },
+
+  // ---------- TypeScript / React (frontend) ----------
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // ---------- Tailwind IntelliSense ----------
+  "tailwindCSS.experimental.configFile": "frontend/tailwind.config.ts",
+  "tailwindCSS.includeLanguages": {
+    "typescriptreact": "typescriptreact",
+    "typescript": "typescriptreact"
+  },
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "clsx"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  // ---------- Editor niceties ----------
+  "editor.rulers": [100],
+  "editor.inlineSuggest.enabled": true,
+  "explorer.compactFolders": false,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.next": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/.venv": true,
+    "**/venv": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/streamlit_impl": true
+  },
+
+  // Spell-check: don't yell at us for finance jargon
+  "cSpell.words": [
+    "ALDrees",
+    "Alinma",
+    "Alrajhi",
+    "anthropic",
+    "candlestick",
+    "fastapi",
+    "fintech",
+    "GSPC",
+    "IBM",
+    "Jarir",
+    "Jazira",
+    "Maaden",
+    "mizan",
+    "Naskh",
+    "Nomu",
+    "OHLC",
+    "pydantic",
+    "pyvenv",
+    "Recharts",
+    "SABIC",
+    "Tadawul",
+    "TASI",
+    "tailwindcss",
+    "uvicorn",
+    "yfinance"
+  ]
+}

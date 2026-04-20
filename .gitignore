@@ -1,5 +1,42 @@
-.env
-venv/
+# Python
 __pycache__/
+*.py[cod]
 *.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+next-env.d.ts
+
+# Env / secrets
+.env
+.env.local
+*.local
+
+# Keep example env files in the repo
+!.env.example
+!.env.local.example
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Editor swap / autosave
+*.tmp
+*.tmp.*
+*.swp
+*.log
+
+# Only ignore user-specific VS Code; keep shared workspace configs
+.vscode/*.log
+.idea/
+
+# Build artifacts
+coverage/
+.pytest_cache/

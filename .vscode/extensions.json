@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "unifiedjs.vscode-mdx",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens"
+  ]
+}

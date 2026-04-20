@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Theme variables — toggled on <html data-market="TASI|US">          */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --accent: #00D4AA;
+  --accent-soft: rgba(0, 212, 170, 0.12);
+  --accent-glow: rgba(0, 212, 170, 0.25);
+  --accent-ring: rgba(0, 212, 170, 0.45);
+
+  --font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-arabic: "Noto Naskh Arabic", "Amiri", "Segoe UI", serif;
+}
+
+html[data-market="US"] {
+  --accent: #FF6B35;
+  --accent-soft: rgba(255, 107, 53, 0.12);
+  --accent-glow: rgba(255, 107, 53, 0.25);
+  --accent-ring: rgba(255, 107, 53, 0.45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+
+html, body {
+  background: #0a0a0b;
+  color: #e7e7ea;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(255,255,255,0.02), transparent 60%),
+    #0a0a0b;
+  min-height: 100dvh;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb {
+  background: #2a2a31;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: #3a3a43; }
+
+/* ------------------------------------------------------------------ */
+/* Reusable utility classes                                            */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  .mz-card {
+    @apply bg-bg-card border border-bg-border rounded-2xl shadow-card;
+  }
+
+  .mz-chip {
+    @apply inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.14em] font-mono px-2 py-1 rounded-md;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-soft);
+  }
+
+  .mz-ticker {
+    @apply font-mono uppercase tracking-[0.12em] text-xs text-fg-muted;
+  }
+
+  .accent-text { color: var(--accent); }
+  .accent-bg { background-color: var(--accent); }
+  .accent-bg-soft { background-color: var(--accent-soft); }
+  .accent-border { border-color: var(--accent); }
+
+  /* Glow used on the active toggle thumb */
+  .accent-glow {
+    box-shadow: 0 0 0 1px var(--accent), 0 0 20px var(--accent-glow);
+  }
+
+  .ar {
+    font-family: var(--font-arabic);
+    direction: rtl;
+    letter-spacing: 0;
+  }
+
+  /* Chart container — strips default focus rings */
+  .mz-chart-wrap .recharts-surface { outline: none; }
+  .mz-chart-wrap .recharts-cartesian-axis-tick text {
+    fill: #6f6f78;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  .mz-chart-wrap .recharts-tooltip-wrapper { outline: none; }
+}
+
+/* Delta coloring helpers */
+.delta-pos { color: #00D4AA; }
+.delta-neg { color: #FF4444; }
+
+/* Simple fade-in on mount */
+@keyframes mz-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+.mz-fade { animation: mz-fade 320ms ease-out both; }

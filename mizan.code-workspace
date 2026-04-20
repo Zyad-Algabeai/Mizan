@@ -1,0 +1,20 @@
+{
+  "folders": [
+    { "name": "🏠 Mizan (root)", "path": "." },
+    { "name": "⚡ backend", "path": "backend" },
+    { "name": "🎨 frontend", "path": "frontend" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:⚡ backend}/.venv/bin/python",
+    "tailwindCSS.experimental.configFile": "${workspaceFolder:🎨 frontend}/tailwind.config.ts"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode"
+    ]
+  }
+}

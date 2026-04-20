@@ -1,14 +1,14 @@
-# ai/analyst.py
-import anthropic
+# backend/ai/analyst.py
+# Claude-powered analysis. Copied verbatim from the Streamlit version.
+
 import os
+import anthropic
 from dotenv import load_dotenv
 
 load_dotenv()
 
 client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
-
-# ---- Market-specific prompt context ----
 _MARKET_CONTEXT = {
     "saudi": {
         "persona": "You are Mizan, an AI financial analyst specialized in the Saudi stock market (Tadawul) and Vision 2030.",
@@ -34,7 +34,6 @@ def _ctx(market_type):
 
 
 def analyze_market(index_hist, sector_data, market_name="TASI", market_type="saudi"):
-    """Generate AI market analysis for the given market."""
     ctx = _ctx(market_type)
 
     latest_close = index_hist["Close"].iloc[-1]
@@ -44,15 +43,11 @@ def analyze_market(index_hist, sector_data, market_name="TASI", market_type="sau
     sector_summary = []
     for sector, stocks in sector_data.items():
         if stocks:
-            avg_change = sum(s["change_pct"] for s in stocks) / len(stocks)
-            sector_summary.append(f"{sector}: {avg_change:+.2f}% avg change")
+            avg = sum(s["change_pct"] for s in stocks) / len(stocks)
+            sector_summary.append(f"{sector}: {avg:+.2f}% avg change")
     sector_text = "\n".join(sector_summary)
 
-    arabic_line = (
-        "4. The same summary in Arabic (ملخص السوق)"
-        if ctx["require_arabic"]
-        else ""
-    )
+    arabic_line = "4. The same summary in Arabic (ملخص السوق)" if ctx["require_arabic"] else ""
 
     prompt = f"""{ctx['persona']}
 
@@ -76,13 +71,12 @@ Be direct, professional, and data-driven. No disclaimers."""
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1000,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
     return message.content[0].text
 
 
 def analyze_stock(ticker, name, hist, market_type="saudi"):
-    """Generate AI analysis for a single stock."""
     ctx = _ctx(market_type)
 
     latest = hist["Close"].iloc[-1]
@@ -114,13 +108,12 @@ Give a 3-sentence analysis: trend, momentum, and one thing to watch.
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=400,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
     return message.content[0].text
 
 
 def analyze_news_sentiment(headlines, market_type="saudi"):
-    """Analyze sentiment of financial headlines."""
     ctx = _ctx(market_type)
     headlines_text = "\n".join([f"- {h}" for h in headlines])
 
@@ -152,13 +145,12 @@ Return your analysis in this exact format:
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=600,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
     return message.content[0].text
 
 
 def generate_weekly_brief(index_hist, sector_data, market_name="TASI", market_type="saudi"):
-    """Generate a full weekly market brief as markdown for the given market."""
     ctx = _ctx(market_type)
 
     latest = index_hist["Close"].iloc[-1]
@@ -168,8 +160,8 @@ def generate_weekly_brief(index_hist, sector_data, market_name="TASI", market_ty
     sector_summary = []
     for sector, stocks in sector_data.items():
         if stocks:
-            avg_change = sum(s["change_pct"] for s in stocks) / len(stocks)
-            sector_summary.append(f"{sector}: {avg_change:+.1f}%")
+            avg = sum(s["change_pct"] for s in stocks) / len(stocks)
+            sector_summary.append(f"{sector}: {avg:+.1f}%")
     sector_text = "\n".join(sector_summary)
 
     arabic_section = (
@@ -203,6 +195,6 @@ Be professional, data-driven, and concise."""
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1500,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
     return message.content[0].text

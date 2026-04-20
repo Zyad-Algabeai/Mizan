@@ -1,4 +1,6 @@
-# config.py
+# backend/config.py
+# Market registry — copied from legacy Streamlit config.
+# Keep this file in sync with any sector changes.
 
 # --- Index symbols (Yahoo Finance) ---
 TASI_INDEX = "^TASI.SR"
@@ -9,70 +11,69 @@ TASI_SECTORS = {
     "🏦 Banking & Finance": {
         "tickers": ["1120.SR", "1180.SR", "1010.SR", "1150.SR"],
         "names": ["Al Rajhi Bank", "Al Jazira Bank", "Riyad Bank", "Alinma Bank"],
-        "vision2030": True
+        "vision2030": True,
     },
     "⚡ Energy & Utilities": {
         "tickers": ["2222.SR", "5110.SR"],
         "names": ["Saudi Aramco", "Saudi Electricity"],
-        "vision2030": True
+        "vision2030": True,
     },
     "📡 Telecom & Tech": {
         "tickers": ["7010.SR", "7020.SR", "7030.SR"],
         "names": ["STC", "Mobily", "Zain Saudi"],
-        "vision2030": True
+        "vision2030": True,
     },
     "⛏️ Mining & Materials": {
         "tickers": ["1211.SR", "2010.SR"],
         "names": ["Ma'aden", "SABIC"],
-        "vision2030": True
+        "vision2030": True,
     },
     "🏥 Healthcare": {
         "tickers": ["4002.SR", "4007.SR"],
         "names": ["Al Hammadi", "Saudi German Health"],
-        "vision2030": True
+        "vision2030": True,
     },
     "🛒 Retail & Consumer": {
         "tickers": ["4190.SR", "4240.SR"],
         "names": ["Jarir Marketing", "Aldrees Petroleum"],
-        "vision2030": False
+        "vision2030": False,
     },
 }
 
-# --- US Market sectors (S&P 500) ---
+# --- US Market sectors (S&P 500 + friends) ---
 US_SECTORS = {
     "💻 Technology": {
         "tickers": ["AAPL", "MSFT", "NVDA", "GOOGL", "META"],
         "names": ["Apple", "Microsoft", "NVIDIA", "Alphabet", "Meta"],
-        "megacap": True
+        "megacap": True,
     },
     "🏦 Financials": {
         "tickers": ["JPM", "BAC", "GS", "MS", "WFC"],
         "names": ["JPMorgan", "Bank of America", "Goldman Sachs", "Morgan Stanley", "Wells Fargo"],
-        "megacap": True
+        "megacap": True,
     },
     "⚡ Energy": {
         "tickers": ["XOM", "CVX", "COP"],
         "names": ["ExxonMobil", "Chevron", "ConocoPhillips"],
-        "megacap": False
+        "megacap": False,
     },
     "🏥 Healthcare": {
         "tickers": ["JNJ", "UNH", "LLY", "PFE"],
         "names": ["Johnson & Johnson", "UnitedHealth", "Eli Lilly", "Pfizer"],
-        "megacap": True
+        "megacap": True,
     },
     "🛒 Consumer": {
         "tickers": ["AMZN", "WMT", "HD", "MCD", "NKE"],
         "names": ["Amazon", "Walmart", "Home Depot", "McDonald's", "Nike"],
-        "megacap": True
+        "megacap": True,
     },
     "🏗️ Industrial": {
         "tickers": ["CAT", "BA", "HON"],
         "names": ["Caterpillar", "Boeing", "Honeywell"],
-        "megacap": False
+        "megacap": False,
     },
 }
 
-# --- Market registry ---
 MARKETS = {
     "TASI": {
         "label": "TASI (Main Market)",
@@ -93,36 +94,3 @@ MARKETS = {
         "currency": "USD",
     },
 }
-
-# --- Themes (look & feel per market) ---
-THEMES = {
-    "TASI": {
-        "emoji": "⚖️",
-        "flag": "🇸🇦",
-        "name": "Mizan | ميزان",
-        "subtitle": "Saudi Market Intelligence • تحليل ذكي لسوق الأسهم السعودي",
-        "primary": "#00D4AA",      # teal/green
-        "secondary": "#D4AF37",    # gold
-        "accent": "#006644",
-        "chart_line": "#00D4AA",
-        "chart_fill": "rgba(0, 212, 170, 0.12)",
-        "bar_scale": ["#FF4444", "#FF8800", "#00D4AA"],
-        "bg_gradient": "linear-gradient(135deg, #0a1a17 0%, #112524 100%)",
-    },
-    "US": {
-        "emoji": "🗽",
-        "flag": "🇺🇸",
-        "name": "Mizan | Wall Street",
-        "subtitle": "US Market Intelligence • S&P 500, Nasdaq & Dow Jones",
-        "primary": "#3B82F6",      # bright blue
-        "secondary": "#DC2626",    # red accent
-        "accent": "#1E3A8A",       # navy
-        "chart_line": "#3B82F6",
-        "chart_fill": "rgba(59, 130, 246, 0.12)",
-        "bar_scale": ["#DC2626", "#F59E0B", "#3B82F6"],
-        "bg_gradient": "linear-gradient(135deg, #0a0f1f 0%, #15203d 100%)",
-    },
-}
-
-# Legacy alias (kept so older imports don't break)
-SECTORS = TASI_SECTORS
